@@ -1,0 +1,164 @@
+# Schema reference
+
+All JSON files are UTF-8, no BOM, arrays at top level (except `VERSION.json` which is an object).
+
+---
+
+## `quran_muhammadi.json` — 6,214 verses
+
+```json
+{
+  "gid": 1,                              // Global verse id 1..6214
+  "sura": 1,                             // Surah number 1..114
+  "aya": 1,                              // Aya within surah (Moroccan numbering)
+  "text": "بِسْمِ ...",                   // Vocalized Warsh text (authoritative)
+  "text_simple": "بسم ...",              // De-vocalized (no tashkil) for search
+  "page_mushafma": 3,                    // Page in printed Muhammadi mushaf (3..640)
+  "page_mauri": 2,                       // Page in mushaf-mauri (0-indexed+1)
+  "page_lawh_edition": 1,                // Page in Al-Lawh edition
+  "hizb": 1,                             // 1..60
+  "juz": 1,                              // 1..30
+  "eighth_id": 1,                        // 1..480 — the eighth where this verse STARTS
+  "word_count": 4,                       // Words in `text` (split on whitespace)
+  "char_count": 39,                      // Characters in `text`
+  "is_sajda": false,                     // True for the 11 Maliki/Maghreb sajda verses
+  "source_decision": "..."               // Provenance tag (see below)
+}
+```
+
+### `source_decision` values
+
+| Tag | Meaning |
+|---|---|
+| `agree` | Lawh and Mauri produce identical vocalized text |
+| `bismillah_stripped_from_mauri` | Mauri bundled Basmala into aya 1 — stripped |
+| `spelling_prefer_lawh` | Lawh used more standard spelling (e.g. `النبيين`) |
+| `lawh_artifact_fix_use_mauri` | Lawh had an underscore artifact (58:13) |
+| `lawh_truncated_at_hizb_marker_use_mauri` | Lawh mistakenly split verses at ۞ markers |
+
+---
+
+## `eighths.json` — 480 entries
+
+```json
+{
+  "eighth_id": 460,
+  "hizb": 58,
+  "pos_in_hizb": 4,                      // 1..8
+  "name_ar": "النصف",                    // Positional Moroccan label (see below)
+  "juz": 29,
+  "is_surah_start": false,               // True when this eighth begins at aya 1, offset 0
+  "implicit_start": false,               // True for the 3 added boundaries (1:1, 75:1, 76:1)
+  "start": {
+    "sura": 74, "aya": 31,
+    "char_offset": 0,                    // Position within text_vocalized
+    "partial_verse": false,              // True = starts mid-verse
+    "mushafma_page": 606                 // Page in printed mushaf
+  },
+  "end": {
+    "sura": 74, "aya": 55,
+    "char_offset": 87,                   // INCLUSIVE — last char belonging to this eighth
+    "inclusive": true,
+    "partial_verse": false,
+    "mushafma_page": 607
+  },
+  "verses_covered": [
+    {"sura": 74, "aya": 31}, ...
+  ],
+  "verse_count": 25,
+  "word_count": 180,
+  "text_preview": "..."                   // First ~60 chars from start offset
+}
+```
+
+### Positional eighth labels (`name_ar`)
+
+| `pos_in_hizb` | `name_ar` | Meaning |
+|---|---|---|
+| 1 | الثمن الأول | First eighth |
+| 2 | الربع | Quarter |
+| 3 | ثلاثة أثمان | Three-eighths |
+| 4 | النصف | Half |
+| 5 | خمسة أثمان | Five-eighths |
+| 6 | ثلاثة أرباع | Three-quarters |
+| 7 | سبعة أثمان | Seven-eighths |
+| 8 | الثمن الأخير | Last eighth |
+
+### Mid-verse cuts
+
+When `start.partial_verse` is `true`, the eighth starts *inside* a verse at `char_offset`. When `end.partial_verse` is `true`, the eighth ends *inside* a verse (not at the last character). Both endpoints are inclusive — `end.char_offset` is the index of the last character belonging to this eighth.
+
+---
+
+## `surahs.json` — 114 entries
+
+```json
+{
+  "number": 1,
+  "name_ar": "الفاتحة",
+  "name_transliteration": "Al-Fatiha",
+  "revelation": "makki",                 // "makki" | "madani"
+  "verse_count": 7,
+  "word_count": 29,
+  "first_eighth_id": 1,
+  "last_eighth_id": 1,
+  "first_page_mushafma": 3,
+  "last_page_mushafma": 3,
+  "first_verse_gid": 1,
+  "last_verse_gid": 7,
+  "has_sajda": false
+}
+```
+
+---
+
+## `hizbs.json` — 60 entries
+
+```json
+{
+  "number": 1,
+  "juz": 1,
+  "first_eighth_id": 1,
+  "last_eighth_id": 8,
+  "start": {...},                        // same shape as eighths.json start
+  "end":   {...},                        // inclusive
+  "first_page_mushafma": 3,
+  "last_page_mushafma": 15,
+  "verse_count": 74,
+  "word_count": 1200
+}
+```
+
+---
+
+## `juzs.json` — 30 entries
+
+```json
+{
+  "number": 1,
+  "first_hizb": 1,
+  "last_hizb": 2,
+  "first_eighth_id": 1,
+  "last_eighth_id": 16,
+  "start": {...},
+  "end":   {...},
+  "first_page_mushafma": 3,
+  "last_page_mushafma": 30,
+  "verse_count": 148,
+  "word_count": 2400
+}
+```
+
+---
+
+## `audio_sources.json`
+
+Per-surah Warsh streams. Build URL: `{server}{surah:03d}.mp3` (e.g. `.../001.mp3`).
+
+Each reciter entry has: `id`, `name_ar`, `name_en`, `country` (ISO-2 or null), `server`, `tariq`, optionally `bitrate_kbps`, `recommended`.
+
+---
+
+## `VERSION.json`
+
+Single object. Totals regenerated by `scripts/build_metadata.py`.

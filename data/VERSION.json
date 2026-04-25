@@ -1,0 +1,20 @@
+{
+  "version": "1.0.0",
+  "released": "2026-04-21",
+  "mushaf": "Moroccan Muhammadi (المصحف المحمدي)",
+  "publisher": "Ministry of Habous and Islamic Affairs, Morocco",
+  "riwaya": "Warsh 'an Nafi'",
+  "numbering": "Moroccan / Maghrebi (6214 verses)",
+  "pages": {"total": 638, "first_page": 3, "last_page": 640},
+  "verses": 6214,
+  "eighths": 480,
+  "hizbs": 60,
+  "juzs": 30,
+  "surahs": 114,
+  "total_words": 83646,
+  "total_chars": 755215,
+  "sajda_verses": 11,
+  "sajda_madhab": "Maliki (Maghreb tradition)",
+  "license": "CC-BY-4.0",
+  "source_code_license": "MIT"
+}

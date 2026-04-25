@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="ar">
+<head>
+<meta charset="utf-8">
+<title>Manual Review - 13 verses</title>
+<style>
+  body { font-family: 'Amiri Quran', 'Traditional Arabic', serif; margin: 0; background: #f5f5f0; }
+  header { background: #1a6b3a; color: white; padding: 16px 24px; position: sticky; top: 0; z-index: 10; }
+  header h1 { margin: 0; font-size: 20px; }
+  header p { margin: 4px 0 0; font-size: 13px; opacity: 0.9; }
+  .card {
+    margin: 24px; background: white; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    padding: 20px; display: grid; grid-template-columns: 1fr 1fr; gap: 20px;
+  }
+  .card h2 { grid-column: 1/-1; margin: 0 0 8px; color: #1a6b3a; font-size: 18px; }
+  .card .meta { grid-column: 1/-1; font-size: 13px; color: #666; margin-bottom: 12px; }
+  .img-pane img { max-width: 100%; border: 1px solid #ddd; border-radius: 4px; }
+  .text-pane { padding-right: 8px; }
+  .choice {
+    padding: 12px; margin-bottom: 8px; border: 2px solid transparent; border-radius: 8px;
+    background: #fafafa; cursor: pointer; transition: all 0.15s;
+  }
+  .choice:hover { background: #f0f0eb; }
+  .choice.picked-lawh { border-color: #1a6b3a; background: #e8f5ec; }
+  .choice.picked-mauri { border-color: #d4a017; background: #fdf5e0; }
+  .choice-label { font-size: 12px; font-weight: bold; color: #555; margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.5px; }
+  .choice-text { font-size: 20px; line-height: 2.2; }
+  .save-btn {
+    position: fixed; bottom: 24px; left: 24px; padding: 14px 28px;
+    background: #1a6b3a; color: white; border: none; border-radius: 28px;
+    font-size: 15px; font-weight: bold; cursor: pointer; box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  }
+  .progress {
+    position: fixed; top: 60px; left: 24px; background: white; padding: 12px 18px;
+    border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); font-size: 13px;
+  }
+</style>
+</head>
+<body>
+<header>
+  <h1>مراجعة يدوية - 13 آية</h1>
+  <p>لكل آية: افتح الصورة، ثم اختر النص المطابق (Lawh = أخضر، Mauri = أصفر)</p>
+</header>
+<div class="progress">
+  <span id="count">0</span> / 13 مراجَع
+</div>
+
+<div class="card" data-idx="0" data-sura="1" data-aya="1">
+  <h2>1. السورة 1 - الآية 1</h2>
+  <div class="meta">صفحة المصحف المحمدي: 003</div>
+  <div class="img-pane">
+    <img src="../raw/muhammadi-pages/page003.png" alt="page 3">
+  </div>
+  <div class="text-pane">
+    <div class="choice" onclick="pick(0, 'lawh', this)">
+      <div class="choice-label">Lawh (الافتراضي)</div>
+      <div class="choice-text">اِ۬لْحَمْدُ لِلهِ رَبِّ اِ۬لْعَٰلَمِينَ ﴿1﴾</div>
+    </div>
+    <div class="choice" onclick="pick(0, 'mauri', this)">
+      <div class="choice-label">Mauri</div>
+      <div class="choice-text">بِسْمِ اِ۬للَّـهِ اِ۬لرَّحْمَـٰنِ اِ۬لرَّحِيمِ اِ۬لْحَمْدُ لِلهِ رَبِّ اِ۬لْعَٰلَمِينَ ﴿1﴾</div>
+    </div>
+  </div>
+</div>
+
+<div class="card" data-idx="1" data-sura="2" data-aya="84">
+  <h2>2. السورة 2 - الآية 84</h2>
+  <div class="meta">صفحة المصحف المحمدي: 015</div>
+  <div class="img-pane">
+    <img src="../raw/muhammadi-pages/page015.png" alt="page 15">
+  </div>
+  <div class="text-pane">
+    <div class="choice" onclick="pick(1, 'lawh', this)">
+      <div class="choice-label">Lawh (الافتراضي)</div>
+      <div class="choice-text">۞وَإِنْ يَّاتُوكُمُۥٓ أُسَٰر۪يٰ تُفَٰدُوهُمْ وَهُوَ مُحَرَّمٌ عَلَيْكُمُۥٓ إِخْرَاجُهُمُۥٓۖ أَفَتُومِنُونَ بِبَعْضِ اِ۬لْكِتَٰبِ وَتَكْفُرُونَ بِبَعْضٖۖ فَمَا جَزَآءُ مَنْ يَّفْعَلُ ذَٰلِكَ مِنكُمُۥٓ إِلَّا خِزْيٞ فِے اِ۬لْحَيَوٰةِ اِ۬لدُّنْي۪اۖ وَيَوْمَ اَ۬لْقِيَٰمَةِ يُرَدُّونَ إِلَيٰٓ أَشَدِّ اِ۬لْعَذَابِۖ وَمَا اَ۬للَّهُ بِغَٰفِلٍ عَمَّا يَعْمَلُونَۖ ﴿84﴾</div>
+    </div>
+    <div class="choice" onclick="pick(1, 'mauri', this)">
+      <div class="choice-label">Mauri</div>
+      <div class="choice-text">ثُمَّ أَنتُمْ هَٰٓؤُلَآءِ تَقْتُلُونَ أَنفُسَكُمْ وَتُخْرِجُونَ فَرِيقاٗ مِّنكُم مِّن دِيٰ۪رِهِمْ تَظَّـٰهَرُونَ عَلَيْهِم بِالِاثْمِ وَالْعُدْوَٰنِۖ ۞وَإِنْ يَّاتُوكُمُۥٓ أُسَٰر۪يٰ تُفَٰدُوهُمْ وَهُوَ مُحَرَّمٌ عَلَيْكُمُۥٓ إِخْرَاجُهُمُۥٓۖ أَفَتُومِنُونَ بِبَعْضِ اِ۬لْكِتَٰبِ وَتَكْفُرُونَ بِبَعْضٖۖ فَمَا جَزَآءُ مَنْ يَّفْعَلُ ذَٰلِكَ مِنكُمُۥٓ إِلَّا خِزْيٞ فِے اِ۬لْحَيَوٰةِ اِ۬لدُّنْي۪ا وَيَوْمَ اَ۬لْقِيَٰمَةِ يُرَدُّونَ إِلَيٰٓ أَشَدِّ اِ۬لْعَذَابِۖ وَمَا اَ۬للَّهُ بِغَٰفِلٍ عَمَّا يَعْمَلُونَۖ ﴿84﴾</div>
+    </div>
+  </div>
+</div>
+
+<div class="card" data-idx="2" data-sura="2" data-aya="195">
+  <h2>3. السورة 2 - الآية 195</h2>
+  <div class="meta">صفحة المصحف المحمدي: 032</div>
+  <div class="img-pane">
+    <img src="../raw/muhammadi-pages/page032.png" alt="page 32">
+  </div>
+  <div class="text-pane">
+    <div class="choice" onclick="pick(2, 'lawh', this)">
+      <div class="choice-label">Lawh (الافتراضي)</div>
+      <div class="choice-text">۞فَمَن لَّمْ يَجِدْ فَصِيَامُ ثَلَٰثَةِ أَيَّامٖ فِے اِ۬لْحَجِّ وَسَبْعَةٍ اِذَا رَجَعْتُمْ تِلْكَ عَشَرَةٞ كَامِلَةٞۖ ذَٰلِكَ لِمَن لَّمْ يَكُنَ اَهْلُهُۥ حَاضِرِے اِ۬لْمَسْجِدِ اِ۬لْحَرَامِۖ وَاتَّقُواْ اُ۬للَّهَ وَاعْلَمُوٓاْ أَنَّ اَ۬للَّهَ شَدِيدُ اُ۬لْعِقَابِۖ ﴿195﴾</div>
+    </div>
+    <div class="choice" onclick="pick(2, 'mauri', this)">
+      <div class="choice-label">Mauri</div>
+      <div class="choice-text">وَأَتِمُّواْ اُ۬لْحَجَّ وَالْعُمْرَةَ لِلهِۖ فَإِنُ ا۟حْصِرْتُمْ فَمَا اَ۪سْتَيْسَرَ مِنَ اَ۬لْهَدْيِۖ وَلَا تَحْلِقُواْ رُءُوسَكُمْ حَتَّيٰ يَبْلُغَ اَ۬لْهَدْيُ مَحِلَّهُۥۖ فَمَن كَانَ مِنكُم مَّرِيضاً اَوْ بِهِۦٓ أَذيٗ مِّن رَّأْسِهِۦ فَفِدْيَةٞ مِّن صِيَامٍ اَوْ صَدَقَةٍ اَوْ نُسُكٖۖ فَإِذَآ أَمِنتُمْ فَمَن تَمَتَّعَ بِالْعُمْرَةِ إِلَي اَ۬لْحَجِّ فَمَا اَ۪سْتَيْسَرَ مِنَ اَ۬لْهَدْيِۖ ۞فَمَن لَّمْ يَجِدْ فَصِيَامُ ثَلَٰثَةِ أَيَّامٖ فِے اِ۬لْحَجِّ وَسَبْعَةٍ اِذَا رَجَعْتُمْ تِلْكَ عَشَرَةٞ كَامِلَةٞۖ ذَٰلِكَ لِمَن لَّمْ يَكُنَ اَهْلُهُۥ حَاضِرِے اِ۬لْمَسْجِدِ اِ۬لْحَرَامِۖ وَاتَّقُواْ اُ۬للَّهَ وَاعْلَمُوٓاْ أَنَّ اَ۬للَّهَ شَدِيدُ اُ۬لْعِقَابِۖ ﴿195﴾</div>
+    </div>
+  </div>
+</div>
+
+<div class="card" data-idx="3" data-sura="2" data-aya="233">
+  <h2>4. السورة 2 - الآية 233</h2>
+  <div class="meta">صفحة المصحف المحمدي: 039</div>
+  <div class="img-pane">
+    <img src="../raw/muhammadi-pages/page039.png" alt="page 39">
+  </div>
+  <div class="text-pane">
+    <div class="choice" onclick="pick(3, 'lawh', this)">
+      <div class="choice-label">Lawh (الافتراضي)</div>
+      <div class="choice-text">۞وَلَا تَعْزِمُواْ عُقْدَةَ اَ۬لنِّكَاحِ حَتَّيٰ يَبْلُغَ اَ۬لْكِتَٰبُ أَجَلَهُۥۖ وَاعْلَمُوٓاْ أَنَّ اَ۬للَّهَ يَعْلَمُ مَا فِےٓ أَنفُسِكُمْ فَاحْذَرُوهُۖ وَاعْلَمُوٓاْ أَنَّ اَ۬للَّهَ غَفُورٌ حَلِيمٞۖ ﴿233﴾</div>
+    </div>
+    <div class="choice" onclick="pick(3, 'mauri', this)">
+      <div class="choice-label">Mauri</div>
+      <div class="choice-text">وَلَا جُنَاحَ عَلَيْكُمْ فِيمَا عَرَّضْتُم بِهِۦ مِنْ خِطْبَةِ اِ۬لنِّسَآءِ اوَ اَكْنَنتُمْ فِےٓ أَنفُسِكُمْۖ عَلِمَ اَ۬للَّهُ أَنَّكُمْ سَتَذْكُرُونَهُنَّ وَلَٰكِن لَّا تُوَاعِدُوهُنَّ سِرّاًۖ اِلَّآ أَن تَقُولُواْ قَوْلاٗ مَّعْرُوفاٗۖ۞وَلَا تَعْزِمُواْ عُقْدَةَ اَ۬لنِّكَاحِ حَتَّيٰ يَبْلُغَ اَ۬لْكِتَٰبُ أَجَلَهُۥۖ وَاعْلَمُوٓاْ أَنَّ اَ۬للَّهَ يَعْلَمُ مَا فِےٓ أَنفُسِكُمْ فَاحْذَرُوهُۖ وَاعْلَمُوٓاْ أَنَّ اَ۬للَّهَ غَفُورٌ حَلِيمٞۖ ﴿233﴾</div>
+    </div>
+  </div>
+</div>
+
+<div class="card" data-idx="4" data-sura="3" data-aya="80">
+  <h2>5. السورة 3 - الآية 80</h2>
+  <div class="meta">صفحة المصحف المحمدي: 060</div>
+  <div class="img-pane">
+    <img src="../raw/muhammadi-pages/page060.png" alt="page 60">
+  </div>
+  <div class="text-pane">
+    <div class="choice" onclick="pick(4, 'lawh', this)">
+      <div class="choice-label">Lawh (الافتراضي)</div>
+      <div class="choice-text">۞قَالَ ءَآقْرَرْتُمْ وَأَخَذتُّمْ عَلَيٰ ذَٰلِكُمُۥٓ إِصْرِےۖ قَالُوٓاْ أَقْرَرْنَاۖ قَالَ فَاشْهَدُواْ وَأَنَا مَعَكُم مِّنَ اَ۬لشَّٰهِدِينَۖ ﴿80﴾</div>
+    </div>
+    <div class="choice" onclick="pick(4, 'mauri', this)">
+      <div class="choice-label">Mauri</div>
+      <div class="choice-text">وَإِذَ اَخَذَ اَ۬للَّهُ مِيثَٰقَ اَ۬لنَّبِيٓـِٕۧنَ لَمَآ ءَاتَيْنَٰكُم مِّن كِتَٰبٖ وَحِكْمَةٖ ثُمَّ جَآءَكُمْ رَسُولٞ مُّصَدِّقٞ لِّمَا مَعَكُمْ لَتُومِنُنَّ بِهِۦ وَلَتَنصُرُنَّهُۥۖ ۞قَالَ ءَآقْرَرْتُمْ وَأَخَذتُّمْ عَلَيٰ ذَٰلِكُمُۥٓ إِصْرِےۖ قَالُوٓاْ أَقْرَرْنَا قَالَ فَاشْهَدُواْ وَأَنَا مَعَكُم مِّنَ اَ۬لشَّـٰهِدِينَۖ ﴿80﴾</div>
+    </div>
+  </div>
+</div>
+
+<div class="card" data-idx="5" data-sura="4" data-aya="19">
+  <h2>6. السورة 4 - الآية 19</h2>
+  <div class="meta">صفحة المصحف المحمدي: 080</div>
+  <div class="img-pane">
+    <img src="../raw/muhammadi-pages/page080.png" alt="page 80">
+  </div>
+  <div class="text-pane">
+    <div class="choice" onclick="pick(5, 'lawh', this)">
+      <div class="choice-label">Lawh (الافتراضي)</div>
+      <div class="choice-text">۞وَعَاشِرُوهُنَّ بِالْمَعْرُوفِۖ فَإِن كَرِهْتُمُوهُنَّ فَعَس۪يٰٓ أَن تَكْرَهُواْ شَيْـٔاٗ وَيَجْعَلَ اَ۬للَّهُ فِيهِ خَيْراٗ كَثِيراٗۖ ﴿19﴾</div>
+    </div>
+    <div class="choice" onclick="pick(5, 'mauri', this)">
+      <div class="choice-label">Mauri</div>
+      <div class="choice-text">يَٰٓأَيُّهَا اَ۬لذِينَ ءَامَنُواْ لَا يَحِلُّ لَكُمُۥٓ أَن تَرِثُوا اُ۬لنِّسَآءَ كَرْهاٗۖ وَلَا تَعْضُلُوهُنَّ لِتَذْهَبُواْ بِبَعْضِ مَآ ءَاتَيْتُمُوهُنَّ إِلَّآ أَنْ يَّاتِينَ بِفَٰحِشَةٖ مُّبَيِّنَةٖۖ ۞وَعَاشِرُوهُنَّ بِالْمَعْرُوفِۖ فَإِن كَرِهْتُمُوهُنَّ فَعَس۪يٰٓ أَن تَكْرَهُواْ شَيْـٔاٗ وَيَجْعَلَ اَ۬للَّهُ فِيهِ خَيْراٗ كَثِيراٗۖ ﴿19﴾</div>
+    </div>
+  </div>
+</div>
+
+<div class="card" data-idx="6" data-sura="4" data-aya="91">
+  <h2>7. السورة 4 - الآية 91</h2>
+  <div class="meta">صفحة المصحف المحمدي: 093</div>
+  <div class="img-pane">
+    <img src="../raw/muhammadi-pages/page093.png" alt="page 93">
+  </div>
+  <div class="text-pane">
+    <div class="choice" onclick="pick(6, 'lawh', this)">
+      <div class="choice-label">Lawh (الافتراضي)</div>
+      <div class="choice-text">۞فَمَن لَّمْ يَجِدْ فَصِيَامُ شَهْرَيْنِ مُتَتَابِعَيْنِ تَوْبَةٗ مِّنَ اَ۬للَّهِۖ وَكَانَ اَ۬للَّهُ عَلِيماً حَكِيماٗۖ ﴿91﴾</div>
+    </div>
+    <div class="choice" onclick="pick(6, 'mauri', this)">
+      <div class="choice-label">Mauri</div>
+      <div class="choice-text">وَمَا كَانَ لِمُومِنٍ اَنْ يَّقْتُلَ مُومِناًۖ اِلَّا خَطَـٔاٗۖ وَمَن قَتَلَ مُومِناً خَطَـٔاٗ فَتَحْرِيرُ رَقَبَةٖ مُّومِنَةٖ وَدِيَةٞ مُّسَلَّمَةٌ اِلَيٰٓ أَهْلِهِۦٓ إِلَّآ أَنْ يَّصَّدَّقُواْۖ فَإِن كَانَ مِن قَوْمٍ عَدُوّٖ لَّكُمْ وَهُوَ مُومِنٞ فَتَحْرِيرُ رَقَبَةٖ مُّومِنَةٖۖ وَإِن كَانَ مِن قَوْمِۢ بَيْنَكُمْ وَبَيْنَهُم مِّيثَٰقٞ فَدِيَةٞ مُّسَلَّمَةٌ اِلَيٰٓ أَهْلِهِۦ وَتَحْرِيرُ رَقَبَةٖ مُّومِنَةٖۖ ۞فَمَن لَّمْ يَجِدْ فَصِيَامُ شَهْرَيْنِ مُتَتَابِعَيْنِ تَوْبَةٗ مِّنَ اَ۬للَّهِۖ وَكَانَ اَ۬للَّهُ عَلِيماً حَكِيماٗۖ ﴿91﴾</div>
+    </div>
+  </div>
+</div>
+
+<div class="card" data-idx="7" data-sura="4" data-aya="156">
+  <h2>8. السورة 4 - الآية 156</h2>
+  <div class="meta">صفحة المصحف المحمدي: 103</div>
+  <div class="img-pane">
+    <img src="../raw/muhammadi-pages/page103.png" alt="page 103">
+  </div>
+  <div class="text-pane">
+    <div class="choice" onclick="pick(7, 'lawh', this)">
+      <div class="choice-label">Lawh (الافتراضي)</div>
+      <div class="choice-text">۞وَمَا قَتَلُوهُ وَمَا صَلَبُوهُ وَلَٰكِن شُبِّهَ لَهُمْۖ وَإِنَّ اَ۬لذِينَ اَ۪خْتَلَفُواْ فِيهِ لَفِے شَكّٖ مِّنْهُۖ مَا لَهُم بِهِۦ مِنْ عِلْمٍۖ اِلَّا اَ۪تِّبَاعَ اَ۬لظَّنِّۖ وَمَا قَتَلُوهُ يَقِيناَۢۖ ﴿156﴾</div>
+    </div>
+    <div class="choice" onclick="pick(7, 'mauri', this)">
+      <div class="choice-label">Mauri</div>
+      <div class="choice-text">وَقَوْلِهِمُۥٓ إِنَّا قَتَلْنَا اَ۬لْمَسِيحَ عِيسَي اَ۪بْنَ مَرْيَمَ رَسُولَ اَ۬للَّهِۖ ۞وَمَا قَتَلُوهُ وَمَا صَلَبُوهُ وَلَٰكِن شُبِّهَ لَهُمْۖ وَإِنَّ اَ۬لذِينَ اَ۪خْتَلَفُواْ فِيهِ لَفِے شَكّٖ مِّنْهُۖ مَا لَهُم بِهِۦ مِنْ عِلْمٍۖ اِلَّا اَ۪تِّبَاعَ اَ۬لظَّنِّۖ وَمَا قَتَلُوهُ يَقِيناَۢۖ ﴿156﴾</div>
+    </div>
+  </div>
+</div>
+
+<div class="card" data-idx="8" data-sura="5" data-aya="34">
+  <h2>9. السورة 5 - الآية 34</h2>
+  <div class="meta">صفحة المصحف المحمدي: 113</div>
+  <div class="img-pane">
+    <img src="../raw/muhammadi-pages/page113.png" alt="page 113">
+  </div>
+  <div class="text-pane">
+    <div class="choice" onclick="pick(8, 'lawh', this)">
+      <div class="choice-label">Lawh (الافتراضي)</div>
+      <div class="choice-text">۞وَلَقَدْ جَآءَتْهُمْ رُسُلُنَا بِالْبَيِّنَٰتِ ثُمَّ إِنَّ كَثِيراٗ مِّنْهُم بَعْدَ ذَٰلِكَ فِے اِ۬لَارْضِ لَمُسْرِفُونَۖ ﴿34﴾</div>
+    </div>
+    <div class="choice" onclick="pick(8, 'mauri', this)">
+      <div class="choice-label">Mauri</div>
+      <div class="choice-text">مِنَ اَجْلِ ذَٰلِكَۖ كَتَبْنَا عَلَيٰ بَنِےٓ إِسْرَآءِيلَ أَنَّهُۥ مَن قَتَلَ نَفْساَۢ بِغَيْرِ نَفْسٍ اَوْ فَسَادٖ فِے اِ۬لَارْضِ فَكَأَنَّمَا قَتَلَ اَ۬لنَّاسَ جَمِيعاٗۖ وَمَنَ اَحْي۪اهَا فَكَأَنَّمَآ أَحْيَا اَ۬لنَّاسَ جَمِيعاٗۖ ۞وَلَقَدْ جَآءَتْهُمْ رُسُلُنَا بِالْبَيِّنَٰتِ ثُمَّ إِنَّ كَثِيراٗ مِّنْهُم بَعْدَ ذَٰلِكَ فِے اِ۬لَارْضِ لَمُسْرِفُونَۖ ﴿34﴾</div>
+    </div>
+  </div>
+</div>
+
+<div class="card" data-idx="9" data-sura="33" data-aya="37">
+  <h2>10. السورة 33 - الآية 37</h2>
+  <div class="meta">صفحة المصحف المحمدي: 435</div>
+  <div class="img-pane">
+    <img src="../raw/muhammadi-pages/page435.png" alt="page 435">
+  </div>
+  <div class="text-pane">
+    <div class="choice" onclick="pick(9, 'lawh', this)">
+      <div class="choice-label">Lawh (الافتراضي)</div>
+      <div class="choice-text">۞فَلَمَّا قَض۪يٰ زَيْدٞ مِّنْهَا وَطَراٗ زَوَّجْنَٰكَهَا لِكَےْ لَا يَكُونَ عَلَي اَ۬لْمُومِنِينَ حَرَجٞ فِےٓ أَزْوَٰجِ أَدْعِيَآئِهِمُۥٓ إِذَا قَضَوْاْ مِنْهُنَّ وَطَراٗۖ وَكَانَ أَمْرُ اُ۬للَّهِ مَفْعُولاٗۖ ﴿37﴾</div>
+    </div>
+    <div class="choice" onclick="pick(9, 'mauri', this)">
+      <div class="choice-label">Mauri</div>
+      <div class="choice-text">وَإِذْ تَقُولُ لِلذِےٓ أَنْعَمَ اَ۬للَّهُ عَلَيْهِ وَأَنْعَمْتَ عَلَيْهِ أَمْسِكْ عَلَيْكَ زَوْجَكَ وَاتَّقِ اِ۬للَّهَ وَتُخْفِے فِے نَفْسِكَ مَا اَ۬للَّهُ مُبْدِيهِ وَتَخْشَي اَ۬لنَّاسَ وَاَ۬للَّهُ أَحَقُّ أَن تَخْش۪يٰهُۖ ۞فَلَمَّا قَض۪يٰ زَيْدٞ مِّنْهَا وَطَراٗ زَوَّجْنَٰكَهَا لِكَےْ لَا يَكُونَ عَلَي اَ۬لْمُومِنِينَ حَرَجٞ فِےٓ أَزْوَٰجِ أَدْعِيَآئِهِمُۥٓ إِذَا قَضَوْاْ مِنْهُنَّ وَطَراٗۖ وَكَانَ أَمْرُ اُ۬للَّهِ مَفْعُولاٗۖ ﴿37﴾</div>
+    </div>
+  </div>
+</div>
+
+<div class="card" data-idx="10" data-sura="59" data-aya="2">
+  <h2>11. السورة 59 - الآية 2</h2>
+  <div class="meta">صفحة المصحف المحمدي: 568</div>
+  <div class="img-pane">
+    <img src="../raw/muhammadi-pages/page568.png" alt="page 568">
+  </div>
+  <div class="text-pane">
+    <div class="choice" onclick="pick(10, 'lawh', this)">
+      <div class="choice-label">Lawh (الافتراضي)</div>
+      <div class="choice-text">۞وَقَذَفَ فِے قُلُوبِهِمُ اُ۬لرُّعْبَۖ يُخْرِبُونَ بُيُوتَهُم بِأَيْدِيهِمْ وَأَيْدِے اِ۬لْمُومِنِينَۖ فَاعْتَبِرُواْ يَٰٓأُوْلِے اِ۬لَابْصٰ۪رِۖ ﴿2﴾</div>
+    </div>
+    <div class="choice" onclick="pick(10, 'mauri', this)">
+      <div class="choice-label">Mauri</div>
+      <div class="choice-text">هُوَ اَ۬لذِےٓ أَخْرَجَ اَ۬لذِينَ كَفَرُواْ مِنَ اَهْلِ اِ۬لْكِتَٰبِ مِن دِيٰ۪رِهِمْ لِأَوَّلِ اِ۬لْحَشْرِۖ مَا ظَنَنتُمُۥٓ أَنْ يَّخْرُجُواْۖ وَظَنُّوٓاْ أَنَّهُم مَّانِعَتُهُمْ حُصُونُهُم مِّنَ اَ۬للَّهِۖ فَأَت۪يٰهُمُ اُ۬للَّهُ مِنْ حَيْثُ لَمْ يَحْتَسِبُواْۖ ۞وَقَذَفَ فِے قُلُوبِهِمُ اُ۬لرُّعْبَۖ يُخْرِبُونَ بُيُوتَهُم بِأَيْدِيهِمْ وَأَيْدِے اِ۬لْمُومِنِينَۖ فَاعْتَبِرُواْ يَٰٓأُوْلِے اِ۬لَابْصٰ۪رِۖ ﴿2﴾</div>
+    </div>
+  </div>
+</div>
+
+<div class="card" data-idx="11" data-sura="65" data-aya="6">
+  <h2>12. السورة 65 - الآية 6</h2>
+  <div class="meta">صفحة المصحف المحمدي: 583</div>
+  <div class="img-pane">
+    <img src="../raw/muhammadi-pages/page583.png" alt="page 583">
+  </div>
+  <div class="text-pane">
+    <div class="choice" onclick="pick(11, 'lawh', this)">
+      <div class="choice-label">Lawh (الافتراضي)</div>
+      <div class="choice-text">۞وَإِن تَعَاسَرْتُمْ فَسَتُرْضِعُ لَهُۥٓ أُخْر۪يٰۖ ﴿6﴾</div>
+    </div>
+    <div class="choice" onclick="pick(11, 'mauri', this)">
+      <div class="choice-label">Mauri</div>
+      <div class="choice-text">اَسْكِنُوهُنَّ مِنْ حَيْثُ سَكَنتُم مِّنْ وُّجْدِكُمْۖ وَلَا تُضَآرُّوهُنَّ لِتُضَيِّقُواْ عَلَيْهِنَّۖ وَإِن كُنَّ أُوْلَٰتِ حَمْلٖ فَأَنفِقُواْ عَلَيْهِنَّ حَتَّيٰ يَضَعْنَ حَمْلَهُنَّۖ فَإِنَ اَرْضَعْنَ لَكُمْ فَـَٔاتُوهُنَّ أُجُورَهُنَّ وَاتَمِرُواْ بَيْنَكُم بِمَعْرُوفٖۖ ۞وَإِن تَعَاسَرْتُمْ فَسَتُرْضِعُ لَهُۥٓ أُخْر۪يٰۖ ﴿6﴾</div>
+    </div>
+  </div>
+</div>
+
+<div class="card" data-idx="12" data-sura="72" data-aya="23">
+  <h2>13. السورة 72 - الآية 23</h2>
+  <div class="meta">صفحة المصحف المحمدي: 601</div>
+  <div class="img-pane">
+    <img src="../raw/muhammadi-pages/page601.png" alt="page 601">
+  </div>
+  <div class="text-pane">
+    <div class="choice" onclick="pick(12, 'lawh', this)">
+      <div class="choice-label">Lawh (الافتراضي)</div>
+      <div class="choice-text">۞وَمَنْ يَّعْصِ اِ۬للَّهَ وَرَسُولَهُۥ فَإِنَّ لَهُۥ نَارَ جَهَنَّمَ خَٰلِدِينَ فِيهَآ أَبَداًۖ ﴿23﴾</div>
+    </div>
+    <div class="choice" onclick="pick(12, 'mauri', this)">
+      <div class="choice-label">Mauri</div>
+      <div class="choice-text">اِلَّا بَلَٰغاٗ مِّنَ اَ۬للَّهِ وَرِسَٰلَٰتِهِۦۖ ۞وَمَنْ يَّعْصِ اِ۬للَّهَ وَرَسُولَهُۥ فَإِنَّ لَهُۥ نَارَ جَهَنَّمَ خَٰلِدِينَ فِيهَآ أَبَداًۖ ﴿23﴾</div>
+    </div>
+  </div>
+</div>
+
+<button class="save-btn" onclick="save()">تنزيل الاختيارات (JSON)</button>
+<script>
+const picks = {};
+function pick(idx, src, el) {
+  const card = el.closest('.card');
+  card.querySelectorAll('.choice').forEach(c => c.classList.remove('picked-lawh', 'picked-mauri'));
+  el.classList.add('picked-' + src);
+  picks[idx] = { sura: +card.dataset.sura, aya: +card.dataset.aya, choice: src };
+  document.getElementById('count').textContent = Object.keys(picks).length;
+}
+function save() {
+  const arr = Object.values(picks);
+  const blob = new Blob([JSON.stringify(arr, null, 2)], {type: 'application/json'});
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'manual_picks.json';
+  a.click();
+}
+</script>
+</body>
+</html>
