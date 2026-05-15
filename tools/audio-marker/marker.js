@@ -5,6 +5,7 @@
 
 const RECITER = { id: 'el_ayoun_el_kouchi', name: 'El-Ayoun El-Kouchi', server: 'https://github.com/ELAHMADI/ma-mushaf-muhammadi-data/releases/download/audio-kouchi-v1/' }
 const SCHEMA_VERSION = 1
+const DATA_BASE = 'https://cdn.jsdelivr.net/gh/ELAHMADI/ma-mushaf-muhammadi-data@v1.0.0/data/'
 
 // ── State ────────────────────────────────────────────────────────────────────
 const state = {
@@ -38,7 +39,7 @@ const lsKey = (n) => `marker:kouchi:${pad3(n)}`
 // ── Boot ─────────────────────────────────────────────────────────────────────
 async function boot() {
   try {
-    const r = await fetch('../../data/surahs.json')
+    const r = await fetch(`${DATA_BASE}surahs.json`)
     if (!r.ok) throw new Error()
     state.surahs = await r.json()
   } catch {
@@ -64,7 +65,7 @@ async function loadSurah(n) {
   state.surahNo = n
 
   try {
-    const r = await fetch('../../data/quran_muhammadi.json')
+    const r = await fetch(`${DATA_BASE}quran_muhammadi.json`)
     if (!r.ok) throw new Error()
     const all = await r.json()
     state.verses = all
