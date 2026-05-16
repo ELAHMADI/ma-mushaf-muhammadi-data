@@ -149,10 +149,20 @@ function renderVerses() {
     if (done) li.classList.add('done')
     if (active) li.classList.add('active')
     li.dataset.idx = i
+    const adjustHtml = done
+      ? `<span class="adj-row">
+           <button class="adj" data-act="adj" data-i="${i}" data-d="-100" aria-label="−100ms">−</button>
+           <button class="adj" data-act="adj" data-i="${i}" data-d="100" aria-label="+100ms">+</button>
+         </span>`
+      : ''
     li.innerHTML = `
       <span class="num">﴿${v.aya}﴾</span>
       <span class="text">${escapeHtml(v.text)}</span>
-      <span class="range">${start != null ? fmt(start) : '—'}<br>${end != null ? fmt(end) : '—'}</span>
+      <span class="range">
+        <span class="t-start">${start != null ? fmt(start) : '—'}</span>
+        <span class="t-end">${end != null ? fmt(end) : '—'}</span>
+        ${adjustHtml}
+      </span>
     `
     li.addEventListener('click', () => {
       if (start != null) audio.currentTime = start
@@ -166,6 +176,12 @@ function renderVerses() {
       }
       updateCursor()
       renderVerses()
+    })
+    li.querySelectorAll('button[data-act="adj"]').forEach(b => {
+      b.addEventListener('click', (e) => {
+        e.stopPropagation()
+        adjustMark(parseInt(b.dataset.i, 10), parseInt(b.dataset.d, 10))
+      })
     })
     list.appendChild(li)
   })
@@ -189,6 +205,27 @@ function markCurrent() {
   // Haptic on mobile
   if (navigator.vibrate) navigator.vibrate(15)
 }
+// Adjust marks[i] by deltaMs, with constraints: must stay > previous mark and < next mark.
+function adjustMark(i, deltaMs) {
+  if (i < 0 || i >= state.marks.length || state.marks[i] == null) return
+  const newVal = state.marks[i] + deltaMs / 1000
+  const prev = i === 0 ? 0 : (state.marks[i-1] ?? 0)
+  const nextMark = state.marks[i+1]
+  const upper = nextMark != null ? nextMark : (state.duration || Infinity)
+  if (newVal <= prev + 0.001) { setStatus(`الحد الأدنى ${fmt(prev)} — لا يمكن النزول أكثر`, true); return }
+  if (newVal >= upper - 0.001) { setStatus(`الحد الأقصى ${fmt(upper)} — لا يمكن الصعود أكثر`, true); return }
+  state.marks[i] = newVal
+  persist()
+  renderVerses()
+  // Re-preview this verse with the new boundary
+  state.cursor = i
+  audio.currentTime = prev
+  state.stopAt = newVal
+  audio.play().catch(() => {})
+  setStatus(`✎ آية ${i+1} → نهاية ${fmt(newVal)} (${deltaMs > 0 ? '+' : ''}${deltaMs}ms)`)
+  if (navigator.vibrate) navigator.vibrate(8)
+}
+
 function undoLast() {
   const idx = Math.min(state.cursor, state.marks.length) - 1
   if (idx < 0) return
