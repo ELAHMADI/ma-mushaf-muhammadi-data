@@ -17,6 +17,7 @@ const state = {
   marks: [],
   audioUrl: '',
   duration: 0,
+  stopAt: null,
 }
 
 // ── DOM ──────────────────────────────────────────────────────────────────────
@@ -156,6 +157,13 @@ function renderVerses() {
     li.addEventListener('click', () => {
       if (start != null) audio.currentTime = start
       state.cursor = i
+      // If verse is fully marked → preview only this verse (seek + play + auto-stop)
+      if (end != null && start != null) {
+        state.stopAt = end
+        audio.play().catch(() => {})
+      } else {
+        state.stopAt = null
+      }
       updateCursor()
       renderVerses()
     })
@@ -292,7 +300,13 @@ audio.addEventListener('loadedmetadata', () => {
   state.duration = audio.duration
   $('totTime').textContent = fmt(audio.duration)
 })
-audio.addEventListener('timeupdate', () => { $('curTime').textContent = fmt(audio.currentTime) })
+audio.addEventListener('timeupdate', () => {
+  $('curTime').textContent = fmt(audio.currentTime)
+  if (state.stopAt != null && audio.currentTime >= state.stopAt) {
+    audio.pause()
+    state.stopAt = null
+  }
+})
 audio.addEventListener('play',  () => $('btnPlayPause').classList.add('playing'))
 audio.addEventListener('pause', () => $('btnPlayPause').classList.remove('playing'))
 audio.addEventListener('ended', () => $('btnPlayPause').classList.remove('playing'))
@@ -304,7 +318,11 @@ $('btnLoad').addEventListener('click', () => {
 })
 $('btnMark').addEventListener('click', markCurrent)
 $('btnUndo').addEventListener('click', undoLast)
-$('btnPlayPause').addEventListener('click', () => audio.paused ? audio.play() : audio.pause())
+$('btnPlayPause').addEventListener('click', () => {
+  // Manual play clears any pending "stop at end of verse" from preview mode
+  state.stopAt = null
+  audio.paused ? audio.play() : audio.pause()
+})
 $('btnCopy').addEventListener('click', copyJson)
 $('btnShare').addEventListener('click', shareJson)
 $('btnDownload').addEventListener('click', downloadJson)
