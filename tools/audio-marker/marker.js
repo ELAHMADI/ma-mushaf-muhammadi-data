@@ -6,6 +6,7 @@
 const RECITER = { id: 'el_ayoun_el_kouchi', name: 'El-Ayoun El-Kouchi', server: 'https://github.com/ELAHMADI/ma-mushaf-muhammadi-data/releases/download/audio-kouchi-v1/' }
 const SCHEMA_VERSION = 1
 const DATA_BASE = 'https://cdn.jsdelivr.net/gh/ELAHMADI/ma-mushaf-muhammadi-data@v1.0.0/data/'
+const TIMINGS_BASE = 'https://cdn.jsdelivr.net/gh/ELAHMADI/ma-mushaf-muhammadi-data@main/data/timings/kouchi/'
 
 // ── State ────────────────────────────────────────────────────────────────────
 const state = {
@@ -57,6 +58,33 @@ async function boot() {
 
   // Hide Share button if Web Share API absent (most desktop browsers)
   if (navigator.share) $('btnShare').hidden = false
+
+  // Review mode via URL ?surah=N — auto-load committed JSON for verification
+  const params = new URLSearchParams(location.search)
+  const reviewN = parseInt(params.get('surah') || '', 10)
+  if (reviewN >= 1 && reviewN <= 114) {
+    $('surahSelect').value = reviewN
+    await loadSurah(reviewN)
+    await overlayCommittedMarks(reviewN)
+  }
+}
+
+// Fetch committed marks from public repo and overlay them (review mode)
+async function overlayCommittedMarks(n) {
+  try {
+    const r = await fetch(`${TIMINGS_BASE}${pad3(n)}.json`, { cache: 'no-store' })
+    if (!r.ok) { setStatus(`لا يوجد JSON محفوظ للسورة ${n} في المستودع`); return }
+    const obj = await r.json()
+    if (!Array.isArray(obj.marks)) throw new Error('marks missing')
+    state.marks = obj.marks.slice(0, state.verses.length)
+    state.cursor = Math.min(state.marks.length, state.verses.length - 1)
+    persist()
+    updateCursor()
+    renderVerses()
+    setStatus(`📥 وضع المراجعة: ${obj.marks.length} علامة من المستودع (${pad3(n)}.json)`)
+  } catch (e) {
+    setStatus(`فشل تحميل JSON من المستودع: ${e.message}`, true)
+  }
 }
 
 // ── Load surah ───────────────────────────────────────────────────────────────
